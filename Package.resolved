@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftySites",
+        "repositoryURL": "https://github.com/swiftysites/swiftysites.git",
+        "state": {
+          "branch": "develop",
+          "revision": "d20e5f48a33828e8624a435a73156d01b374edb5",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
