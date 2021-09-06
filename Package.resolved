@@ -2,11 +2,20 @@
   "object": {
     "pins": [
       {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser",
+        "state": {
+          "branch": null,
+          "revision": "83b23d940471b313427da226196661856f6ba3e0",
+          "version": "0.4.4"
+        }
+      },
+      {
         "package": "SwiftySites",
         "repositoryURL": "https://github.com/swiftysites/swiftysites.git",
         "state": {
           "branch": "develop",
-          "revision": "d20e5f48a33828e8624a435a73156d01b374edb5",
+          "revision": "814db2845bfd13cfcae3a5a7b46ed96e95ac6f24",
           "version": null
         }
       }
