@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="/assets/global.css" />
+        <link id="themeCSSLink" rel="stylesheet" href="/assets/dark.css" media="(prefers-color-scheme: dark)" />
+        <link rel="stylesheet" href="/assets/highlight.css" />
+        <script src="https://cdn.jsdelivr.net/gh/swiftysites/theme-switch@release/src/theme-switch.min.js"></script>
+        <script src="/assets/highlight.js"></script>
+        <script>hljs.highlightAll();</script>
+        <title>SwiftySites | DocC and Netlify</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+    <ul>
+        <li><a href="/">Home</a></li><li><a href="/cmark-gfm">CMark-GFM</a></li><li><a href="/posts">Archive</a></li><li><a href="/tags">Topics</a></li>
+    </ul>
+</nav>
+            <theme-switch stylesheet-id="themeCSSLink" color="rgb(3, 102, 214)" color-dark="rgb(88, 166, 255)"></theme-switch>
+        </header>
+        <main>
+    <article>
+    <header>
+        <h1><a href="/posts/docc-netlify">DocC and Netlify</a></h1>
+        <div>dl on 8 Sep 2021</div>
+    </header>
+    <main>
+    <p>On a <a href="/posts/docc-website">previous post</a> I discussed how to merge a DocC documentation archive into a SwiftySites-generated website.</p>
+<p>Now Apple provides <a href="https://developer.apple.com/documentation/Xcode/distributing-documentation-to-external-developers">some guidelines</a> on how to make the exported site play nice with your web server using <a href="https://httpd.apache.org/docs/2.4/rewrite/intro.html">rewrites</a>.</p>
+<p>But with static sites it is common not to have such control over the server side. We instead prefer services like <a href="https://pages.github.com">GitHub Pages</a> and <a href="https://www.netlify.com">Netlify</a> which is the one used by this page.</p>
+<p>There is already a <a href="https://josephduffy.co.uk/posts/hosting-docc-archives">great write-up</a> on how to integrate DocC with Netlify. I had to make a few tweaks here and there but the solution pretty much worked seamessly.</p>
+<p>Finally here's the resulting configuration used to host SwiftySites's own <a href="/documentation/">DocC documentation</a>.</p>
+<figcaption>netlify.toml</figcaption>
+<pre><code class="language-toml">[[redirects]]
+from = &quot;/documentation/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/index.html&quot;
+
+[[redirects]]
+from = &quot;/tutorials/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/index.html&quot;
+
+[[redirects]]
+from = &quot;/data/documentation.json&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/data/documentation/root.json&quot;
+
+[[redirects]]
+from = &quot;/css/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/css/:splat&quot;
+
+[[redirects]]
+from = &quot;/data/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/data/:splat&quot;
+
+[[redirects]]
+from = &quot;/downloads/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/downloads/:splat&quot;
+
+[[redirects]]
+from = &quot;/images/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/images/:splat&quot;
+
+[[redirects]]
+from = &quot;/img/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/img/:splat&quot;
+
+[[redirects]]
+from = &quot;/index/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/index/:splat&quot;
+
+[[redirects]]
+from = &quot;/js/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/js/:splat&quot;
+
+[[redirects]]
+from = &quot;/videos/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/videos/:splat&quot;
+
+[[redirects]]
+from = &quot;/metadata.json&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/metadata.json&quot;
+
+[[redirects]]
+from = &quot;/theme-settings.json&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/theme-settings.json&quot;
+</code></pre>
+
+    </main>
+</article>
+</main>
+        <footer>
+            <span>Made with  and <a href="https://github.com/swiftysites/swiftysites">SwiftySites</a>.</span>
+        </footer>
+    </body>
+</html>

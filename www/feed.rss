@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>SwiftySites</title>
+        <link>https://swiftysites.diegolavalle.com</link>
+        <description>Documentation and news about the SwiftySites framework for generating static sites.</description>
+        <generator>SwiftySites -- swiftysites.diegolavalle.com</generator>
+        <language>SwiftySites</language>
+        <managingEditor>swiftysites@diegolavalle.com</managingEditor>
+        <webMaster>dev@diegolavalle.com</webMaster>
+        <copyright>Copyright © ∞ SwiftySites</copyright>
+        <lastBuildDate>Wed, 08 Sep 2021 10:57:09 +0100</lastBuildDate>
+        <pubDate>Wed, 08 Sep 2021 10:57:09 +0100</pubDate>
+        <ttl>250</ttl>
+        <atom:link href="https://swiftysites.diegolavalle.com/feed.rss" rel="self" type="application/rss+xml" />
+        
+<item>
+    <guid isPermaLink="true">https://swiftysites.diegolavalle.com/posts/hello-world</guid>
+    <title>Hello, World!</title>
+    <description>
+Hello and welcome to the humble SwiftySites Blog. As a first post I thought it would be nice to share some of my motivation for building this library.
+
+Nowadays it's pretty common for a programmer to want to show their work and process to the world. It's also common for us to write our own tools.
+
+In the past I had used everything from traditional content management systems to popular [publishing platforms](https://medium.com/swift-you-and-i). For the past few years I settled for the awesome [Hugo](https://gohugo.io) static site generator which I used to build the original [Swift You and I](https://swiftui.diegolavalle.com) publication.
+
+Hugo has a lot of amazing features which I love but it dows require some knowledge of the Go Language for writing the more advanced [templates](https://pkg.go.dev/text/template). For a long time I tried my best to learn but never felt as at home as I do when I write Swift.
+
+Looking for options I quiclky landed in John Sundell's tool [Publish](https://github.com/johnsundell/publish). To be perfectly honest this would have been the tool to choose from the beginnig – had it existed a couple of years back.
+
+At this point I had gotten accustomed to many of the niceties of Hugo and wanted to keep some of them around. John's [DSL approach](https://www.swiftbysundell.com/articles/building-dsls-in-swift/) showed me that the Swift compiler can really be helpful when defining a website's structure so I came up with a hybrid concept.
+
+Instead of declaring everything straight in Swift I decided to split the problem in two. For the content's metadata – which Hugo implements with [Front Matter](https://gohugo.io/content-management/front-matter/) – I would leverage the full power of Swift's type system. For the templates I thought of something else…
+
+Swift already has a great templating solution called [string interpolation](https://www.hackingwithswift.com/read/0/5/string-interpolation). This was the last piece of the puzzle. From the first proof of concept I noticed how nicely the structured metadata merged with the more free string composition.
+
+In the coming weeks I will use this very site to test the concept and document the process of building a framework that hopefully other people find useful.
+
+Cheers!</description>
+    <link>https://swiftysites.diegolavalle.com/posts/hello-world</link>
+    <pubDate>Fri, 03 Sep 2021 13:00:00 +0100</pubDate>
+    <content:encoded>
+        <![CDATA[<p>Hello and welcome to the humble SwiftySites Blog. As a first post I thought it would be nice to share some of my motivation for building this library.</p>
+<p>Nowadays it's pretty common for a programmer to want to show their work and process to the world. It's also common for us to write our own tools.</p>
+<p>In the past I had used everything from traditional content management systems to popular <a href="https://medium.com/swift-you-and-i">publishing platforms</a>. For the past few years I settled for the awesome <a href="https://gohugo.io">Hugo</a> static site generator which I used to build the original <a href="https://swiftui.diegolavalle.com">Swift You and I</a> publication.</p>
+<p>Hugo has a lot of amazing features which I love but it dows require some knowledge of the Go Language for writing the more advanced <a href="https://pkg.go.dev/text/template">templates</a>. For a long time I tried my best to learn but never felt as at home as I do when I write Swift.</p>
+<p>Looking for options I quiclky landed in John Sundell's tool <a href="https://github.com/johnsundell/publish">Publish</a>. To be perfectly honest this would have been the tool to choose from the beginnig – had it existed a couple of years back.</p>
+<p>At this point I had gotten accustomed to many of the niceties of Hugo and wanted to keep some of them around. John's <a href="https://www.swiftbysundell.com/articles/building-dsls-in-swift/">DSL approach</a> showed me that the Swift compiler can really be helpful when defining a website's structure so I came up with a hybrid concept.</p>
+<p>Instead of declaring everything straight in Swift I decided to split the problem in two. For the content's metadata – which Hugo implements with <a href="https://gohugo.io/content-management/front-matter/">Front Matter</a> – I would leverage the full power of Swift's type system. For the templates I thought of something else…</p>
+<p>Swift already has a great templating solution called <a href="https://www.hackingwithswift.com/read/0/5/string-interpolation">string interpolation</a>. This was the last piece of the puzzle. From the first proof of concept I noticed how nicely the structured metadata merged with the more free string composition.</p>
+<p>In the coming weeks I will use this very site to test the concept and document the process of building a framework that hopefully other people find useful.</p>
+<p>Cheers!</p>
+]]>
+    </content:encoded>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftysites.diegolavalle.com/posts/supporting-markdown</guid>
+    <title>Supporting Markdown</title>
+    <description>
+One of the first challenges one encounters when building a static site generator is Markdown support.
+
+I knew Apple had just [announced](https://developer.apple.com/videos/play/wwdc2021/10109/?time=486) during WWDC21 support for Markdown in attributed strings and other APIs but offered no interface for directly converting Markdown to HTML.
+
+A bit of digging in the developer forums led me to [this answer](https://developer.apple.com/forums/thread/682711) by an Apple engineer. Now I knew for a fact that internally they were using the fantastic [cmark-gfm](https://github.com/github/cmark-gfm) library.
+
+`cmark-gfm` itself is a fork of the [cmark](https://github.com/commonmark/cmark) C library. GFM stands for [GitHub Flavor Markdown](https://github.github.com/gfm/) and consists of a set of extensions to the [CommonMark](https://commonmark.org) specification.
+
+Having some experience in integrating C code into Swift applications I started adapting `cmark-gfm` for my purposes. The endeavour involved cross-compiling for the relevant architectures and linking to a custom Objective-C framework.
+
+Since `cmark-gfm` lacked a simplified interface for straightforwardly converting GFM to HTML – which the original `cmark` had – I decided to write my own Swift protocol around it. I decided to expose all the options and extensions available from the underlying libraries.
+
+While the whole effort was [open-source](https://github.com/swiftysites/cmark-gfm) I decided to publish the final result as a binary XCFramework. This makes it really easy to include – via Swift Package Manager (SPM) – in SwiftySites or any other project that needs it without the hassle of having to build everything from C sources.
+</description>
+    <link>https://swiftysites.diegolavalle.com/posts/supporting-markdown</link>
+    <pubDate>Sat, 04 Sep 2021 13:00:00 +0100</pubDate>
+    <content:encoded>
+        <![CDATA[<p>One of the first challenges one encounters when building a static site generator is Markdown support.</p>
+<p>I knew Apple had just <a href="https://developer.apple.com/videos/play/wwdc2021/10109/?time=486">announced</a> during WWDC21 support for Markdown in attributed strings and other APIs but offered no interface for directly converting Markdown to HTML.</p>
+<p>A bit of digging in the developer forums led me to <a href="https://developer.apple.com/forums/thread/682711">this answer</a> by an Apple engineer. Now I knew for a fact that internally they were using the fantastic <a href="https://github.com/github/cmark-gfm">cmark-gfm</a> library.</p>
+<p><code>cmark-gfm</code> itself is a fork of the <a href="https://github.com/commonmark/cmark">cmark</a> C library. GFM stands for <a href="https://github.github.com/gfm/">GitHub Flavor Markdown</a> and consists of a set of extensions to the <a href="https://commonmark.org">CommonMark</a> specification.</p>
+<p>Having some experience in integrating C code into Swift applications I started adapting <code>cmark-gfm</code> for my purposes. The endeavour involved cross-compiling for the relevant architectures and linking to a custom Objective-C framework.</p>
+<p>Since <code>cmark-gfm</code> lacked a simplified interface for straightforwardly converting GFM to HTML – which the original <code>cmark</code> had – I decided to write my own Swift protocol around it. I decided to expose all the options and extensions available from the underlying libraries.</p>
+<p>While the whole effort was <a href="https://github.com/swiftysites/cmark-gfm">open-source</a> I decided to publish the final result as a binary XCFramework. This makes it really easy to include – via Swift Package Manager (SPM) – in SwiftySites or any other project that needs it without the hassle of having to build everything from C sources.</p>
+]]>
+    </content:encoded>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftysites.diegolavalle.com/posts/syntax-highlighting</guid>
+    <title>Syntax Highlighting</title>
+    <description>
+After overcomming the first big challenge of implementing [Markdown support](/posts/supporting-markdown) I found out rather quickly that this did not include any type of syntax hightlighting.
+
+All `pre` blocks were rendered with no color and the code block [info string](https://github.github.com/gfm/#info-string) was largely ignored by my basic stylesheet.
+
+Once again I turned to Apple and noticed they were using [highlight.js](https://highlightjs.org) to generate the code blocks used in [DocC](https://developer.apple.com/documentation/docc).
+
+I decided to [customize](https://highlightjs.org/download/) my download to include only the languages I would need for this blog. I also picked one of the many color schemes they have available.
+
+To put it to the test what better way than including a chunk of the code used to generate this exact page with SwiftySites. Lo and behold the coloring magically appears.
+
+<figcaption>main.js</figcaption>
+
+```swift
+let homePage = Page("Home Page", path: "/") { """
+_Some markdown here…_
+"""
+
+let pageTemplate = BasicSite.templateA { site, page in """
+<!doctype html>
+<html lang="en">
+    …
+    <title>\(site.title)</title>
+    …
+    <main>\(page.content)</main>
+    …
+</html>
+""" }
+
+BasicSite(
+    SiteConfig(title: "SwiftySites"),
+    contentA: [homePage],
+    templates: [pageTemplate]
+).render()
+```
+
+Now having inspected a DocC-generated site I have noticed that Apple is using a custom language definition for `highlight.js`. Since the code is obfuscated I couldn't extract it to incorporate into this site. Still the default Swift definition is decent enough and all of the other languages render nicely.
+</description>
+    <link>https://swiftysites.diegolavalle.com/posts/syntax-highlighting</link>
+    <pubDate>Sun, 05 Sep 2021 13:00:00 +0100</pubDate>
+    <content:encoded>
+        <![CDATA[<p>After overcomming the first big challenge of implementing <a href="/posts/supporting-markdown">Markdown support</a> I found out rather quickly that this did not include any type of syntax hightlighting.</p>
+<p>All <code>pre</code> blocks were rendered with no color and the code block <a href="https://github.github.com/gfm/#info-string">info string</a> was largely ignored by my basic stylesheet.</p>
+<p>Once again I turned to Apple and noticed they were using <a href="https://highlightjs.org">highlight.js</a> to generate the code blocks used in <a href="https://developer.apple.com/documentation/docc">DocC</a>.</p>
+<p>I decided to <a href="https://highlightjs.org/download/">customize</a> my download to include only the languages I would need for this blog. I also picked one of the many color schemes they have available.</p>
+<p>To put it to the test what better way than including a chunk of the code used to generate this exact page with SwiftySites. Lo and behold the coloring magically appears.</p>
+<figcaption>main.js</figcaption>
+<pre><code class="language-swift">let homePage = Page(&quot;Home Page&quot;, path: &quot;/&quot;) { &quot;&quot;&quot;
+_Some markdown here…_
+&quot;&quot;&quot;
+
+let pageTemplate = BasicSite.templateA { site, page in &quot;&quot;&quot;
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    …
+    &lt;title&gt;\(site.title)&lt;/title&gt;
+    …
+    &lt;main&gt;\(page.content)&lt;/main&gt;
+    …
+&lt;/html&gt;
+&quot;&quot;&quot; }
+
+BasicSite(
+    SiteConfig(title: &quot;SwiftySites&quot;),
+    contentA: [homePage],
+    templates: [pageTemplate]
+).render()
+</code></pre>
+<p>Now having inspected a DocC-generated site I have noticed that Apple is using a custom language definition for <code>highlight.js</code>. Since the code is obfuscated I couldn't extract it to incorporate into this site. Still the default Swift definition is decent enough and all of the other languages render nicely.</p>
+]]>
+    </content:encoded>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftysites.diegolavalle.com/posts/docc-website</guid>
+    <title>DocC Website</title>
+    <description>
+This site has two functions. One is to be a real-world test of the SwiftySites framework – documenting its evolution. The other is the more traditional role of hosting the tool's documentation.
+
+The [DocC Framework](https://developer.apple.com/documentation/docc) is brand new but a fills up a gap previously covered by [open-source efforts](https://swiftdoc.org). Since SwiftySites is also new I thought it would be the perfect fit to try out the officially sanctioned way of generating docs.
+
+In a way DocC is its own static site generator not unlike SwiftySites. It uses comments on the source code as well as standalone Markdown files as input and it applies internal HTML templates to produce a website. So the challenge becomes how to merge the DocC-generated site into this present site.
+
+Apple has a [guide](https://developer.apple.com/documentation/Xcode/distributing-documentation-to-external-developers) which includes how to _Host a Documentation Archive on Your Website_. It simply involves exporting the generated bundle from the Xcode viewer.
+
+My solution was to straightforwardly dump the exported DocC archive into the `static` folder of this very site's [source repo](https://github.com/swiftysites/website/tree/develop/static). SwiftySites will copy all static contents and only then generate the new outputs on top so we only need to be careful not to call things with the same name.
+
+The final result can be seen [here](/documentation/) in all its glory.
+</description>
+    <link>https://swiftysites.diegolavalle.com/posts/docc-website</link>
+    <pubDate>Mon, 06 Sep 2021 13:00:00 +0100</pubDate>
+    <content:encoded>
+        <![CDATA[<p>This site has two functions. One is to be a real-world test of the SwiftySites framework – documenting its evolution. The other is the more traditional role of hosting the tool's documentation.</p>
+<p>The <a href="https://developer.apple.com/documentation/docc">DocC Framework</a> is brand new but a fills up a gap previously covered by <a href="https://swiftdoc.org">open-source efforts</a>. Since SwiftySites is also new I thought it would be the perfect fit to try out the officially sanctioned way of generating docs.</p>
+<p>In a way DocC is its own static site generator not unlike SwiftySites. It uses comments on the source code as well as standalone Markdown files as input and it applies internal HTML templates to produce a website. So the challenge becomes how to merge the DocC-generated site into this present site.</p>
+<p>Apple has a <a href="https://developer.apple.com/documentation/Xcode/distributing-documentation-to-external-developers">guide</a> which includes how to <em>Host a Documentation Archive on Your Website</em>. It simply involves exporting the generated bundle from the Xcode viewer.</p>
+<p>My solution was to straightforwardly dump the exported DocC archive into the <code>static</code> folder of this very site's <a href="https://github.com/swiftysites/website/tree/develop/static">source repo</a>. SwiftySites will copy all static contents and only then generate the new outputs on top so we only need to be careful not to call things with the same name.</p>
+<p>The final result can be seen <a href="/documentation/">here</a> in all its glory.</p>
+]]>
+    </content:encoded>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftysites.diegolavalle.com/posts/theme-switch</guid>
+    <title>Theme Switch</title>
+    <description>
+The websites generated by Apple's DocC tool all feature this very handy toggle for switching between dark and light themes. In a [previous post](/posts/docc-website) the idea of merging a SwiftySites blog with a DocC web archive was introduced. Wouldn't it be nice to have that same theme-switching control on _all_ pages?
+
+Introducing [Theme Switch](https://github.com/swiftysites/theme-switch) by SwiftySites. Theme Switch is a web component that replicates both the look and behaviour of Apple's control with some additional features.
+
+![Theme Switch](/assets/theme-switch.gif)
+
+Unlike the DocC toggle which is implemented using [Vue.js](https://vuejs.org), Theme Switch does not have any dependencies and instead is implemented with pure Javascript as a standard [v1 HTML Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
+
+It allows you to define your own dark mode CSS and display it only when your users wish it. When in automatic mode it will honor the system's preference. And if your browser does not support CSS [color scheme preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) the component will just let the user pick between the two options.
+
+Try it out on your own websites or better yet try it on your SwiftySites website!
+</description>
+    <link>https://swiftysites.diegolavalle.com/posts/theme-switch</link>
+    <pubDate>Tue, 07 Sep 2021 13:00:00 +0100</pubDate>
+    <content:encoded>
+        <![CDATA[<p>The websites generated by Apple's DocC tool all feature this very handy toggle for switching between dark and light themes. In a <a href="/posts/docc-website">previous post</a> the idea of merging a SwiftySites blog with a DocC web archive was introduced. Wouldn't it be nice to have that same theme-switching control on <em>all</em> pages?</p>
+<p>Introducing <a href="https://github.com/swiftysites/theme-switch">Theme Switch</a> by SwiftySites. Theme Switch is a web component that replicates both the look and behaviour of Apple's control with some additional features.</p>
+<p><img src="/assets/theme-switch.gif" alt="Theme Switch" /></p>
+<p>Unlike the DocC toggle which is implemented using <a href="https://vuejs.org">Vue.js</a>, Theme Switch does not have any dependencies and instead is implemented with pure Javascript as a standard <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements">v1 HTML Custom Element</a>.</p>
+<p>It allows you to define your own dark mode CSS and display it only when your users wish it. When in automatic mode it will honor the system's preference. And if your browser does not support CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">color scheme preferences</a> the component will just let the user pick between the two options.</p>
+<p>Try it out on your own websites or better yet try it on your SwiftySites website!</p>
+]]>
+    </content:encoded>
+</item>
+<item>
+    <guid isPermaLink="true">https://swiftysites.diegolavalle.com/posts/docc-netlify</guid>
+    <title>DocC and Netlify</title>
+    <description>
+On a [previous post](/posts/docc-website) I discussed how to merge a DocC documentation archive into a SwiftySites-generated website.
+
+Now Apple provides [some guidelines](https://developer.apple.com/documentation/Xcode/distributing-documentation-to-external-developers) on how to make the exported site play nice with your web server using [rewrites](https://httpd.apache.org/docs/2.4/rewrite/intro.html).
+
+But with static sites it is common not to have such control over the server side. We instead prefer services like [GitHub Pages](https://pages.github.com) and [Netlify](https://www.netlify.com) which is the one used by this page.
+
+There is already a [great write-up](https://josephduffy.co.uk/posts/hosting-docc-archives) on how to integrate DocC with Netlify. I had to make a few tweaks here and there but the solution pretty much worked seamessly.
+
+Finally here's the resulting configuration used to host SwiftySites's own [DocC documentation](/documentation/).
+
+<figcaption>netlify.toml</figcaption>
+
+```toml
+[[redirects]]
+from = "/documentation/*"
+status = 200
+to = "/SwiftySites.doccarchive/index.html"
+
+[[redirects]]
+from = "/tutorials/*"
+status = 200
+to = "/SwiftySites.doccarchive/index.html"
+
+[[redirects]]
+from = "/data/documentation.json"
+status = 200
+to = "/SwiftySites.doccarchive/data/documentation/root.json"
+
+[[redirects]]
+from = "/css/*"
+status = 200
+to = "/SwiftySites.doccarchive/css/:splat"
+
+[[redirects]]
+from = "/data/*"
+status = 200
+to = "/SwiftySites.doccarchive/data/:splat"
+
+[[redirects]]
+from = "/downloads/*"
+status = 200
+to = "/SwiftySites.doccarchive/downloads/:splat"
+
+[[redirects]]
+from = "/images/*"
+status = 200
+to = "/SwiftySites.doccarchive/images/:splat"
+
+[[redirects]]
+from = "/img/*"
+status = 200
+to = "/SwiftySites.doccarchive/img/:splat"
+
+[[redirects]]
+from = "/index/*"
+status = 200
+to = "/SwiftySites.doccarchive/index/:splat"
+
+[[redirects]]
+from = "/js/*"
+status = 200
+to = "/SwiftySites.doccarchive/js/:splat"
+
+[[redirects]]
+from = "/videos/*"
+status = 200
+to = "/SwiftySites.doccarchive/videos/:splat"
+
+[[redirects]]
+from = "/metadata.json"
+status = 200
+to = "/SwiftySites.doccarchive/metadata.json"
+
+[[redirects]]
+from = "/theme-settings.json"
+status = 200
+to = "/SwiftySites.doccarchive/theme-settings.json"
+</description>
+    <link>https://swiftysites.diegolavalle.com/posts/docc-netlify</link>
+    <pubDate>Wed, 08 Sep 2021 13:00:00 +0100</pubDate>
+    <content:encoded>
+        <![CDATA[<p>On a <a href="/posts/docc-website">previous post</a> I discussed how to merge a DocC documentation archive into a SwiftySites-generated website.</p>
+<p>Now Apple provides <a href="https://developer.apple.com/documentation/Xcode/distributing-documentation-to-external-developers">some guidelines</a> on how to make the exported site play nice with your web server using <a href="https://httpd.apache.org/docs/2.4/rewrite/intro.html">rewrites</a>.</p>
+<p>But with static sites it is common not to have such control over the server side. We instead prefer services like <a href="https://pages.github.com">GitHub Pages</a> and <a href="https://www.netlify.com">Netlify</a> which is the one used by this page.</p>
+<p>There is already a <a href="https://josephduffy.co.uk/posts/hosting-docc-archives">great write-up</a> on how to integrate DocC with Netlify. I had to make a few tweaks here and there but the solution pretty much worked seamessly.</p>
+<p>Finally here's the resulting configuration used to host SwiftySites's own <a href="/documentation/">DocC documentation</a>.</p>
+<figcaption>netlify.toml</figcaption>
+<pre><code class="language-toml">[[redirects]]
+from = &quot;/documentation/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/index.html&quot;
+
+[[redirects]]
+from = &quot;/tutorials/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/index.html&quot;
+
+[[redirects]]
+from = &quot;/data/documentation.json&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/data/documentation/root.json&quot;
+
+[[redirects]]
+from = &quot;/css/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/css/:splat&quot;
+
+[[redirects]]
+from = &quot;/data/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/data/:splat&quot;
+
+[[redirects]]
+from = &quot;/downloads/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/downloads/:splat&quot;
+
+[[redirects]]
+from = &quot;/images/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/images/:splat&quot;
+
+[[redirects]]
+from = &quot;/img/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/img/:splat&quot;
+
+[[redirects]]
+from = &quot;/index/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/index/:splat&quot;
+
+[[redirects]]
+from = &quot;/js/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/js/:splat&quot;
+
+[[redirects]]
+from = &quot;/videos/*&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/videos/:splat&quot;
+
+[[redirects]]
+from = &quot;/metadata.json&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/metadata.json&quot;
+
+[[redirects]]
+from = &quot;/theme-settings.json&quot;
+status = 200
+to = &quot;/SwiftySites.doccarchive/theme-settings.json&quot;
+</code></pre>
+]]>
+    </content:encoded>
+</item>
+    </channel>
+</rss>

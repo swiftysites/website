@@ -13,7 +13,7 @@ let siteMap = TaggedBlog(
         developmentUrl: URL(string: "http://localhost.localdomain")!
     ),
     contentA: [homePage, cmarkGfmPage, postsIndexPage, tagsPage],
-    contentB: [helloWorldPost, supportingMarkdownPost, syntaxHightlightingPost, doccPost, themeSwitchPost],
+    contentB: [helloWorldPost, supportingMarkdownPost, syntaxHightlightingPost, doccPost, themeSwitchPost, doccNetlifyPost],
     templates: [pageTemplate, homeTemplate, homeXMLTemplate, postsSectionTemplate, tagsSectionTemplate, postTemplate, tagTemplate],
     generators: [tagGenerator]
 ).render()
