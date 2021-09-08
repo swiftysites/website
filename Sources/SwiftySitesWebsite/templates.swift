@@ -1,16 +1,16 @@
 import SwiftySites
 
-let pageTemplate = BasicBlog.templateA(exclude: #"(/)|(/posts)"#) { site, page in baseLayout(site: site, page: page, main: """
+let pageTemplate = TaggedBlog.templateA(exclude: "/posts|/tags|/") { site, page in baseLayout(site: site, page: page, main: """
 <main>
     \(page.content)
 </main>
 """ ) }
 
-let homeTemplate = BasicBlog.templateA("/") { site, page in baseLayout(site: site, page: page, main: """
+let homeTemplate = TaggedBlog.templateA("/") { site, page in baseLayout(site: site, page: page, main: """
 <main>
     \(page.content)
     <hr />
-    \(site.contentB.sorted(by: Post.dateDescendingOrder).enumerated().map {
+    \(site.contentB.sorted(by: TaggedPost.dateDescendingOrder).enumerated().map {
         """
         \(postPartial(site, $1))
         \($0 < site.contentB.count - 1 ? "<hr />" : "")
@@ -19,7 +19,7 @@ let homeTemplate = BasicBlog.templateA("/") { site, page in baseLayout(site: sit
 </main>
 """ ) }
 
-let homeXMLTemplate = BasicBlog.templateA("/", index: "feed", suffix: "rss") { site, page in """
+let homeXMLTemplate = TaggedBlog.templateA("/", index: "feed", suffix: "rss") { site, page in """
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
@@ -42,7 +42,7 @@ let homeXMLTemplate = BasicBlog.templateA("/", index: "feed", suffix: "rss") { s
             <title>\($1.title)</title>
             <description>\($1.$content)</description>
             <link>\(site.url)\($1.path)</link>
-            <pubDate>Thu, 26 Aug 2021 15:15:00 +0200</pubDate>
+            <pubDate>\($1.dateRssFormatted)</pubDate>
             <content:encoded>
                 <![CDATA[\($1.content)]]>
             </content:encoded>
@@ -52,7 +52,7 @@ let homeXMLTemplate = BasicBlog.templateA("/", index: "feed", suffix: "rss") { s
 </rss>
 """ }
 
-let postsSectionTemplate = BasicBlog.templateA("/posts") { site, page in baseLayout(site: site, page: page, main: """
+let postsSectionTemplate = TaggedBlog.templateA("/posts") { site, page in baseLayout(site: site, page: page, main: """
 <main>
     \(page.content)
     <hr />
@@ -68,13 +68,13 @@ let postsSectionTemplate = BasicBlog.templateA("/posts") { site, page in baseLay
 </main>
 """ ) }
 
-let postTemplate = BasicBlog.templateB { site, post in baseLayout(site: site, post: post, main: """
+let postTemplate = TaggedBlog.templateB { site, post in baseLayout(site: site, post: post, main: """
 <main>
     \(postPartial(site, post))
 </main>
 """ ) }
 
-let tagsSectionTemplate = BasicBlog.templateA("/tags") { site, page in baseLayout(site: site, page: page, main: """
+let tagsSectionTemplate = TaggedBlog.templateA("/tags") { site, page in baseLayout(site: site, page: page, main: """
 <main>
     \(page.content)
     <hr />
@@ -90,7 +90,7 @@ let tagsSectionTemplate = BasicBlog.templateA("/tags") { site, page in baseLayou
 </main>
 """ ) }
 
-let tagTemplate = BasicBlog.templateC(#"/tags/\w*"#) { site, page in baseLayout(site: site, tagPage: page, main: """
+let tagTemplate = TaggedBlog.templateC(#"/tags/[\w\-]*"#) { site, page in baseLayout(site: site, tagPage: page, main: """
 <main>
     <p>Content about topic: \(page.tag)</p>
     <hr />

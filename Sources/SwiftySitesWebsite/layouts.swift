@@ -1,6 +1,6 @@
 import SwiftySites
 
-func baseLayout (site: BasicBlog, page: Page? = nil, post: Post? = nil, tagPage: TagPage? = nil, main: String) -> String { """
+func baseLayout (site: TaggedBlog, page: Page? = nil, post: TaggedPost? = nil, tagPage: TagPage? = nil, main: String) -> String { """
 <!doctype html>
 <html lang="en">
     <head>

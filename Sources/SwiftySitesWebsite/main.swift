@@ -1,7 +1,7 @@
 import SwiftySites
 import Foundation
 
-let siteMap = BasicBlog(
+let siteMap = TaggedBlog(
     SiteConfig(
         title: "SwiftySites",
         description: "Documentation and news about the SwiftySites framework for generating static sites.",
@@ -13,7 +13,7 @@ let siteMap = BasicBlog(
         developmentUrl: URL(string: "http://localhost.localdomain")!
     ),
     contentA: [homePage, cmarkGfmPage, postsIndexPage, tagsPage],
-    contentB: [helloWorldPost, supportingMarkdownPost, syntaxHightlightingPost],
+    contentB: [helloWorldPost, supportingMarkdownPost, syntaxHightlightingPost, doccPost, themeSwitchPost],
     templates: [pageTemplate, homeTemplate, homeXMLTemplate, postsSectionTemplate, tagsSectionTemplate, postTemplate, tagTemplate],
     generators: [tagGenerator]
 ).render()
