@@ -208,8 +208,36 @@ let netlify = TaggedPost("/posts/netlify", "Supporting Markdown", "SwiftySites",
 
 """# }
 
-let hugoPost = TaggedPost("/posts/hugo", "Supporting Markdown", "SwiftySites", "2021-08-15T12:00:00Z") { #"""
+let hugoPost = TaggedPost("/posts/swift-docker", "Docker", "SwiftySites", "2021-08-15T12:00:00Z") { #"""
 
+With an admin user.
 
+```sh
+brew install docker docker-machine
+brew install --cask virtualbox
+```
+
+Fix permisions on _System Preferences > Security & Privacy_ and restart.
+
+With any user.
+
+```sh
+docker-machine create --driver virtualbox default
+eval $(docker-machine env default)
+docker pull swiftlang/swift:nightly-5.5-focal
+mkdir swiftylinux
+docker run -it -v "$PWD/swiftylinux":/swiftylinux --name swiftylinux swiftlang/swift:nightly-5.5-focal /bin/bash
+exit
+docker start swiftylinux
+docker attach swiftylinux
+docker rm swiftylinux
+```
+
+In Docker. For binary targets pointing to XCFramework zip archives install the `unzip` tool.
+
+```sh
+apt update
+apt install unzip
+```
 
 """# }
