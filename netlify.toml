@@ -1,7 +1,6 @@
 [build]
-#base = ""
 publish = "www"
-command = "echo"
+command = "swift run -c release SwiftySitesWebsite --clean"
 
 [[redirects]]
 from = "/documentation/*"
