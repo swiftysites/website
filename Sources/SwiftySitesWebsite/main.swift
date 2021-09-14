@@ -12,10 +12,10 @@ let siteMap = TaggedBlog(
         productionUrl: URL(string: "https://swiftysites.diegolavalle.com")!,
         developmentUrl: URL(string: "http://localhost.localdomain")!
     ),
-    contentA: [homePage, cmarkGfmPage, postsIndexPage, tagsPage],
+    contentA: [homePage, gfMarkdownPage, postsIndexPage, tagsPage],
     contentB: [helloWorldPost, supportingMarkdownPost, syntaxHightlightingPost, doccPost, themeSwitchPost, doccNetlifyPost],
     templates: [pageTemplate, homeTemplate, homeXMLTemplate, postsSectionTemplate, tagsSectionTemplate, postTemplate, tagTemplate],
     generators: [tagGenerator]
 ).render()
 
-print(siteMap.urls)
+// print(siteMap.urls)

@@ -9,17 +9,17 @@ SwiftySites is a library for generating static websites with Xcode or the Swift 
 Check out the DocC <a href="/documentation/" target="_blank">documentation</a> for more. Source code available [here](https://github.com/swiftysites/swiftysites).
 """# }
 
-let cmarkGfmPage = Page("/cmark-gfm", "CMark-GFM") { """
+let gfMarkdownPage = Page("/gfmarkdown", "GFMarkdown") { """
 
-# CMark-GFM library
+# GFMarkdown Library
 
-The [CMark-GFM](https://github.com/swiftysites/cmark-gfm) Swift library is a wrapper around the excellent [cmark-gfm](https://github.com/github/cmark-gfm) C library.
+The [GFMarkdown](https://github.com/swiftysites/gfmarkdown) Swift library is a wrapper around the excellent [cmark-gfm](https://github.com/github/cmark-gfm) C library.
 
 Originally developed for SwiftySites, it can be used from any Swift project needing to translate CommonMark / GitHub Flavored Markdown (GFM) into plain old HTML.
 
-It provides a simplified interface for parsing Markdown strings while exposing all CMark options as well as every GFM extension available.
+It exposes a simple interface for parsing Markdown strings while exposing all CMark options as well as every GFM extension available. This can be done via the `@Markdown` property wrapper or using the `MarkdownString` object.
 
-CMarkGFM is distributed as an XCFramework and includes all binary dependencies. Find the full DocC documentation [here](/documentation/cmarkgfm/) as well as attached to each release.
+GFMarkdown is distributed as a Swift Package and includes all binary dependencies for macOS (Apple Silicon and Intel) and Linux. Find the full DocC documentation [here](/documentation/gfmarkdown/) as well as attached to each release.
 
 """ }
 
