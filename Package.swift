@@ -5,7 +5,7 @@ let package = Package(
     name: "SwiftySitesWebsite",
     platforms: [.macOS(.v11)],
     dependencies: [
-        .package(url: "https://github.com/swiftysites/swiftysites.git", branch: "develop")
+        .package(url: "https://github.com/swiftysites/swiftysites", .branch("release"))
     ],
     targets: [
         .executableTarget(
