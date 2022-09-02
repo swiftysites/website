@@ -21,3 +21,9 @@
 	gpgsign = true
 [include]
   path = user
+[remote "backup"]
+        url = github.com:diegolavalledev/swiftysites-website
+        fetch = +refs/heads/*:refs/remotes/backup/*
+[remote "publish"]
+        url = github.com:diegolavalledev/diegolavalle.com
+        fetch = +refs/heads/*:refs/remotes/publish/*
