@@ -1,11 +1,12 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
     name: "SwiftySitesWebsite",
-    platforms: [.macOS(.v11)],
+    platforms: [.macOS(.v14)],
     dependencies: [
-        .package(url: "https://github.com/swiftysites/swiftysites", .branch("release"))
+        //.package(url: "https://github.com/swiftysites/swiftysites", branch: "release")
+        .package(path: "../swiftysites")
     ],
     targets: [
         .executableTarget(

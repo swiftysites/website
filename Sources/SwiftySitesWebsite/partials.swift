@@ -1,9 +1,9 @@
 import SwiftySites
 
-let navigationPartial = { (site: TaggedBlog, page: Page?) -> String in """
+let navigationPartial = { (page: Page?) -> String in """
 <nav>
     <ul>
-        \(site.contentA.reduce("") {
+        \(pages.reduce("") {
             $0 + """
             <li>\(page?.path == $1.path
                 ? """
@@ -19,7 +19,7 @@ let navigationPartial = { (site: TaggedBlog, page: Page?) -> String in """
 </nav>
 """ }
 
-let postPartial = { (site: TaggedBlog, post: TaggedPost) -> String in """
+let postPartial = { (post: TaggedPost) -> String in """
 <article>
     <header>
         <h1><a href="\(post.path)">\(post.title)</a></h1>

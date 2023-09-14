@@ -6,7 +6,7 @@ let homePage = Page("/", "Home") { #"""
 
 SwiftySites is a library for generating static websites with Xcode or the Swift Package Manager (SPM). Write your content entirely in Markdown. Create some HTML templates using Swift's string interpolation. Combine it all in a site declaration and export for preview or publication.
 
-Check out the DocC <a href="/documentation/" target="_blank">documentation</a> for more. Source code available [here](https://github.com/swiftysites/swiftysites).
+Check out the DocC <a href="/SwiftySites.doccarchive/documentation/root/" target="_blank">documentation</a> for more. Source code available [here](https://github.com/swiftysites/swiftysites).
 """# }
 
 let gfMarkdownPage = Page("/gfmarkdown", "GFMarkdown") { """
@@ -19,7 +19,7 @@ Originally developed for SwiftySites, it can be used from any Swift project need
 
 It exposes a simple interface for parsing Markdown strings while exposing all CMark options as well as every GFM extension available. This can be done via the `@Markdown` property wrapper or using the `MarkdownString` object.
 
-GFMarkdown is distributed as a Swift Package and includes all binary dependencies for macOS (Apple Silicon and Intel) and Linux. Find the full DocC documentation [here](/documentation/gfmarkdown/) as well as attached to each release.
+GFMarkdown is distributed as a Swift Package and includes all binary dependencies for macOS (Apple Silicon and Intel) and Linux. Find the full DocC documentation [here](/GFMarkdown.doccarchive/documentation/gfmarkdown/) as well as attached to each release.
 
 """ }
 

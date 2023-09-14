@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "GFMarkdown",
-        "repositoryURL": "https://github.com/swiftysites/gfmarkdown",
-        "state": {
-          "branch": "1.0.2",
-          "revision": "582b7f71cce26e61bb354e7592934e45493908ac",
-          "version": null
-        }
-      },
-      {
-        "package": "swift-argument-parser",
-        "repositoryURL": "https://github.com/apple/swift-argument-parser",
-        "state": {
-          "branch": null,
-          "revision": "83b23d940471b313427da226196661856f6ba3e0",
-          "version": "0.4.4"
-        }
-      },
-      {
-        "package": "SwiftySites",
-        "repositoryURL": "https://github.com/swiftysites/swiftysites",
-        "state": {
-          "branch": "release",
-          "revision": "b5254c20168d31a2c2cd2f2778dc09ff749a123d",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "gfmarkdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftysites/gfmarkdown",
+      "state" : {
+        "branch" : "release",
+        "revision" : "287cab2f1206fa89b5e57177942978eab40a800f"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
+        "version" : "1.2.3"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-cmark.git",
+      "state" : {
+        "branch" : "gfm",
+        "revision" : "3bc2f3e25df0cecc5dc269f7ccae65d0f386f06a"
+      }
+    }
+  ],
+  "version" : 2
 }

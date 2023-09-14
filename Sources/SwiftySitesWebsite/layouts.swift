@@ -1,6 +1,6 @@
 import SwiftySites
 
-func baseLayout (site: TaggedBlog, page: Page? = nil, post: TaggedPost? = nil, tagPage: TagPage? = nil, main: String) -> String { """
+func baseLayout (page: Page? = nil, post: TaggedPost? = nil, tagPage: TagPage? = nil, main: String) -> String { """
 <!doctype html>
 <html lang="en">
     <head>
@@ -11,11 +11,11 @@ func baseLayout (site: TaggedBlog, page: Page? = nil, post: TaggedPost? = nil, t
         <script src="https://cdn.jsdelivr.net/gh/swiftysites/theme-switch@release/src/theme-switch.min.js"></script>
         <script src="/assets/highlight.js"></script>
         <script>hljs.highlightAll();</script>
-        <title>\(site.config.title) | \(page?.title ?? post?.title ?? tagPage!.tag)</title>
+        <title>\(config.title) | \(page?.title ?? post?.title ?? tagPage!.tag)</title>
     </head>
     <body>
         <header>
-            \(navigationPartial(site, page))
+            \(navigationPartial(page))
             <theme-switch stylesheet-id="themeCSSLink" color="rgb(3, 102, 214)" color-dark="rgb(88, 166, 255)"></theme-switch>
         </header>
         \(main)

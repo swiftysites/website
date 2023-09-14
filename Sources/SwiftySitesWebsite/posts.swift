@@ -10,7 +10,7 @@ But with static sites it is common not to have such control over the server side
 
 There is already a [great write-up](https://josephduffy.co.uk/posts/hosting-docc-archives) on how to integrate DocC with Netlify. I had to make a few tweaks here and there but the solution pretty much worked seamessly.
 
-Finally here's the resulting configuration used to host SwiftySites's own [DocC documentation](/documentation/).
+Finally here's the resulting configuration used to host SwiftySites's own [DocC documentation](/docs/documentation/root/).
 
 <figcaption>netlify.toml</figcaption>
 
@@ -110,7 +110,7 @@ Apple has a [guide](https://developer.apple.com/documentation/Xcode/distributing
 
 My solution was to straightforwardly dump the exported DocC archive into the `static` folder of this very site's [source repo](https://github.com/swiftysites/website/tree/develop/static). SwiftySites will copy all static contents and only then generate the new outputs on top so we only need to be careful not to call things with the same name.
 
-The final result can be seen [here](/documentation/) in all its glory.
+The final result can be seen [here](/SwiftySites.doccarchive/documentation/root/) in all its glory.
 
 """# }
 
