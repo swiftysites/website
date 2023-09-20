@@ -32,7 +32,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftysites/swiftysites",
       "state" : {
-        "branch" : "develop",
+        "branch" : "release",
         "revision" : "08b5a99027e088281c7cb0a41956db0f4792481d"
       }
     }

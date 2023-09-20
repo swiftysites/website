@@ -1,3 +1,19 @@
 [build]
 publish = "www"
 command = "swift run -c release SwiftySitesWebsite --clean"
+
+[[redirects]]
+from = "/SwiftySites.doccarchive/documentation/"
+to = "/SwiftySites.doccarchive/documentation/root/"
+
+[[redirects]]
+from = "/SwiftySites.doccarchive/"
+to = "/SwiftySites.doccarchive/documentation/root/"
+
+[[redirects]]
+from = "/GFMarkdown.doccarchive/documentation/"
+to = "/GFMarkdown.doccarchive/documentation/gfmarkdown/"
+
+[[redirects]]
+from = "/GFMarkdown.doccarchive/"
+to = "/GFMarkdown.doccarchive/documentation/gfmarkdown/"
