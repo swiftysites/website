@@ -1,6 +1,6 @@
 import SwiftySites
 
-let navigationPartial = { (page: Page?) -> String in """
+let navigationPartial = { @Sendable (page: Page?) -> String in """
 <nav>
     <ul>
         \(pages.reduce("") {
@@ -19,7 +19,7 @@ let navigationPartial = { (page: Page?) -> String in """
 </nav>
 """ }
 
-let postPartial = { (post: TaggedPost) -> String in """
+let postPartial = { @Sendable (post: TaggedPost) -> String in """
 <article>
     <header>
         <h1><a href="\(post.path)">\(post.title)</a></h1>
